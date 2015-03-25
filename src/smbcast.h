@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QDir>
+#include <QDomDocument>
+
 
 namespace Ui {
 class SMBCast;
@@ -23,6 +25,7 @@ private slots:
 
 private:
     Ui::SMBCast *ui;
+    void parse_shakemap(QString fileName);
 };
 
 #endif // SMBCAST_H
