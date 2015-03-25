@@ -1,5 +1,5 @@
 # SMBCast
-Shake Map BroadCast
+Shake Map Broadcast
 
 ### Description
 This small repository is for an in house shakemap broadcaster.
