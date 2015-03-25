@@ -6,9 +6,19 @@ SMBCast::SMBCast(QWidget *parent) :
     ui(new Ui::SMBCast)
 {
     ui->setupUi(this);
+    Debug = true;
 }
 
 SMBCast::~SMBCast()
 {
     delete ui;
+}
+
+void SMBCast::on_actionManually_open_file_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName (this, "Open CSV file",
+                                                     QDir::currentPath(), "Shakemap XML(*.xml)");
+    if (Debug)
+        ui->textBrowser->append("Reading File...");
+
 }
