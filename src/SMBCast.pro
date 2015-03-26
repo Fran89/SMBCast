@@ -21,4 +21,6 @@ HEADERS  += smbcast.h \
 
 FORMS    += smbcast.ui
 
+#CONFIG += static plugin
+
 OTHER_FILES +=

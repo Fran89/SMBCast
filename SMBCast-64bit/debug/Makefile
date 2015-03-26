@@ -13,8 +13,8 @@ MAKEFILE      = Makefile
 CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_WIDGETS_LIB -DQT_POSITIONING_LIB -DQT_XML_LIB -DQT_GUI_LIB -DQT_CORE_LIB
-CFLAGS        = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-CXXFLAGS      = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
+CFLAGS        = -m64 -pipe -g -fPIC -Wall -W -D_REENTRANT -fPIE $(DEFINES)
+CXXFLAGS      = -m64 -pipe -g -fPIC -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 INCPATH       = -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I../../src -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtPositioning -I/usr/include/qt5/QtXml -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -I.
 LINK          = g++
 LFLAGS        = -m64
@@ -165,7 +165,6 @@ all: Makefile $(TARGET)
 
 $(TARGET): ui_smbcast.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
-	{ test -n "$(DESTDIR)" && DESTDIR="$(DESTDIR)" || DESTDIR=.; } && test $$(gdb --version | sed -e 's,[^0-9][^0-9]*\([0-9]\)\.\([0-9]\).*,\1\2,;q') -gt 72 && gdb --nx --batch --quiet -ex 'set confirm off' -ex "save gdb-index $$DESTDIR" -ex quit '$(TARGET)' && test -f $(TARGET).gdb-index && objcopy --add-section '.gdb_index=$(TARGET).gdb-index' --set-section-flags '.gdb_index=readonly' '$(TARGET)' '$(TARGET)' && rm -f $(TARGET).gdb-index || true
 
 Makefile: ../../src/SMBCast.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
@@ -492,6 +491,15 @@ moc_smbcast.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtGui/QTextTable \
+		/usr/include/qt5/QtGui/qtexttable.h \
+		/usr/include/qt5/QtGui/qtextobject.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		/usr/include/qt5/QtGui/qglyphrun.h \
+		/usr/include/qt5/QtGui/qrawfont.h \
+		/usr/include/qt5/QtGui/qfontdatabase.h \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -642,6 +650,15 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtGui/QTextTable \
+		/usr/include/qt5/QtGui/qtexttable.h \
+		/usr/include/qt5/QtGui/qtextobject.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		/usr/include/qt5/QtGui/qglyphrun.h \
+		/usr/include/qt5/QtGui/qrawfont.h \
+		/usr/include/qt5/QtGui/qfontdatabase.h \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -780,6 +797,15 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtGui/QTextTable \
+		/usr/include/qt5/QtGui/qtexttable.h \
+		/usr/include/qt5/QtGui/qtextobject.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		/usr/include/qt5/QtGui/qglyphrun.h \
+		/usr/include/qt5/QtGui/qrawfont.h \
+		/usr/include/qt5/QtGui/qfontdatabase.h \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -830,10 +856,7 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtWidgets/qtextbrowser.h \
 		/usr/include/qt5/QtWidgets/qtextedit.h \
 		/usr/include/qt5/QtGui/qtextdocument.h \
-		/usr/include/qt5/QtGui/qtextoption.h \
 		/usr/include/qt5/QtGui/qtextcursor.h \
-		/usr/include/qt5/QtGui/qtextformat.h \
-		/usr/include/qt5/QtGui/qpen.h \
 		/usr/include/qt5/QtWidgets/QTextEdit \
 		/usr/include/qt5/QtWidgets/QToolBar \
 		/usr/include/qt5/QtWidgets/qtoolbar.h \

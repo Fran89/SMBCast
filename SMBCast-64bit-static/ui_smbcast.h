@@ -45,7 +45,7 @@ public:
     {
         if (SMBCast->objectName().isEmpty())
             SMBCast->setObjectName(QStringLiteral("SMBCast"));
-        SMBCast->resize(659, 488);
+        SMBCast->resize(950, 482);
         actionManually_open_file = new QAction(SMBCast);
         actionManually_open_file->setObjectName(QStringLiteral("actionManually_open_file"));
         actionToggle_Debug = new QAction(SMBCast);
@@ -77,7 +77,7 @@ public:
         SMBCast->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SMBCast);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 659, 25));
+        menuBar->setGeometry(QRect(0, 0, 950, 25));
         menuOptions = new QMenu(menuBar);
         menuOptions->setObjectName(QStringLiteral("menuOptions"));
         menuHelp = new QMenu(menuBar);
