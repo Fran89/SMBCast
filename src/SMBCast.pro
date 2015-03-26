@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        smbcast.cpp
+        smbcast.cpp \
+    smclass.cpp
 
-HEADERS  += smbcast.h
+HEADERS  += smbcast.h \
+    smclass.h
 
 FORMS    += smbcast.ui
+
+OTHER_FILES +=

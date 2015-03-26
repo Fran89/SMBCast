@@ -12,13 +12,13 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_WIDGETS_LIB -DQT_POSITIONING_LIB -DQT_XML_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I../../src -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtXml -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -I.
+INCPATH       = -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I../../src -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtPositioning -I/usr/include/qt5/QtXml -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I. -I.
 LINK          = g++
 LFLAGS        = -m64
-LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -L/usr/lib/x86_64-linux-gnu -lQt5Xml -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -L/usr/lib/x86_64-linux-gnu -lQt5Positioning -lQt5Xml -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
@@ -46,9 +46,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../src/main.cpp \
-		../../src/smbcast.cpp moc_smbcast.cpp
+		../../src/smbcast.cpp \
+		../../src/smclass.cpp moc_smbcast.cpp
 OBJECTS       = main.o \
 		smbcast.o \
+		smclass.o \
 		moc_smbcast.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
@@ -249,6 +251,7 @@ Makefile: ../../src/SMBCast.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl \
+		/usr/lib/x86_64-linux-gnu/libQt5Positioning.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Xml.prl
 	$(QMAKE) -spec linux-g++-64 CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ../../src/SMBCast.pro
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
@@ -335,6 +338,7 @@ Makefile: ../../src/SMBCast.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
+/usr/lib/x86_64-linux-gnu/libQt5Positioning.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Xml.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++-64 CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ../../src/SMBCast.pro
@@ -343,7 +347,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SMBCast1.0.0 || mkdir -p .tmp/SMBCast1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.h .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/main.cpp ../../src/smbcast.cpp .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.ui .tmp/SMBCast1.0.0/ && (cd `dirname .tmp/SMBCast1.0.0` && $(TAR) SMBCast1.0.0.tar SMBCast1.0.0 && $(COMPRESS) SMBCast1.0.0.tar) && $(MOVE) `dirname .tmp/SMBCast1.0.0`/SMBCast1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SMBCast1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.h ../../src/smclass.h .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/main.cpp ../../src/smbcast.cpp ../../src/smclass.cpp .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.ui .tmp/SMBCast1.0.0/ && (cd `dirname .tmp/SMBCast1.0.0` && $(TAR) SMBCast1.0.0.tar SMBCast1.0.0 && $(COMPRESS) SMBCast1.0.0.tar) && $(MOVE) `dirname .tmp/SMBCast1.0.0`/SMBCast1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SMBCast1.0.0
 
 
 clean:compiler_clean 
@@ -485,7 +489,18 @@ moc_smbcast.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtXml/QDomDocument \
+		/usr/include/qt5/QtXml/qdom.h \
+		/usr/include/qt5/QtXml/qtxmlglobal.h \
 		/usr/include/qt5/QtCore/QDir \
+		../../src/smclass.h \
+		/usr/include/qt5/QtPositioning/QGeoCoordinate \
+		/usr/include/qt5/QtPositioning/qgeocoordinate.h \
+		/usr/include/qt5/QtCore/QMetaType \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtPositioning/qpositioningglobal.h \
+		/usr/include/qt5/QtCore/QList \
 		../../src/smbcast.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/smbcast.h -o moc_smbcast.cpp
 
@@ -624,7 +639,18 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtXml/QDomDocument \
+		/usr/include/qt5/QtXml/qdom.h \
+		/usr/include/qt5/QtXml/qtxmlglobal.h \
 		/usr/include/qt5/QtCore/QDir \
+		../../src/smclass.h \
+		/usr/include/qt5/QtPositioning/QGeoCoordinate \
+		/usr/include/qt5/QtPositioning/qgeocoordinate.h \
+		/usr/include/qt5/QtCore/QMetaType \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtPositioning/qpositioningglobal.h \
+		/usr/include/qt5/QtCore/QList \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
@@ -751,7 +777,18 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtXml/QDomDocument \
+		/usr/include/qt5/QtXml/qdom.h \
+		/usr/include/qt5/QtXml/qtxmlglobal.h \
 		/usr/include/qt5/QtCore/QDir \
+		../../src/smclass.h \
+		/usr/include/qt5/QtPositioning/QGeoCoordinate \
+		/usr/include/qt5/QtPositioning/qgeocoordinate.h \
+		/usr/include/qt5/QtCore/QMetaType \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtPositioning/qpositioningglobal.h \
+		/usr/include/qt5/QtCore/QList \
 		ui_smbcast.h \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/QAction \
@@ -797,6 +834,7 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtGui/qtextcursor.h \
 		/usr/include/qt5/QtGui/qtextformat.h \
 		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtWidgets/QTextEdit \
 		/usr/include/qt5/QtWidgets/QToolBar \
 		/usr/include/qt5/QtWidgets/qtoolbar.h \
 		/usr/include/qt5/QtWidgets/QVBoxLayout \
@@ -806,6 +844,69 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtWidgets/qgridlayout.h \
 		/usr/include/qt5/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbcast.o ../../src/smbcast.cpp
+
+smclass.o: ../../src/smclass.cpp ../../src/smclass.h \
+		/usr/include/qt5/QtPositioning/QGeoCoordinate \
+		/usr/include/qt5/QtPositioning/qgeocoordinate.h \
+		/usr/include/qt5/QtCore/QMetaType \
+		/usr/include/qt5/QtCore/qmetatype.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qvarlengtharray.h \
+		/usr/include/qt5/QtCore/qcontainerfwd.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qisenum.h \
+		/usr/include/qt5/QtCore/qobjectdefs.h \
+		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/qshareddata.h \
+		/usr/include/qt5/QtPositioning/qpositioningglobal.h \
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qiterator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smclass.o ../../src/smclass.cpp
 
 moc_smbcast.o: moc_smbcast.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_smbcast.o moc_smbcast.cpp
