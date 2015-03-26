@@ -14,12 +14,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         smbcast.cpp \
-    smclass.cpp
+    smclass.cpp \
+    smbconf.cpp
 
 HEADERS  += smbcast.h \
-    smclass.h
+    smclass.h \
+    smbconf.h
 
-FORMS    += smbcast.ui
+FORMS    += smbcast.ui \
+    smbconf.ui
 
 #CONFIG += static plugin
 

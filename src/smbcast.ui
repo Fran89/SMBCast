@@ -59,6 +59,7 @@
     <property name="title">
      <string>Options</string>
     </property>
+    <addaction name="actionE_Mail_Settings"/>
     <addaction name="actionManually_open_file"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -87,6 +88,11 @@
   <action name="actionToggle_Debug">
    <property name="text">
     <string>Toggle Debug</string>
+   </property>
+  </action>
+  <action name="actionE_Mail_Settings">
+   <property name="text">
+    <string>E-Mail Settings</string>
    </property>
   </action>
  </widget>

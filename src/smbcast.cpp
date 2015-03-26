@@ -7,6 +7,15 @@ SMBCast::SMBCast(QWidget *parent) :
 {
     ui->setupUi(this);
     Debug = false;
+    Email.setFileName("Email.cfg");
+    SMS.setFileName("SMS.cfg");
+    Carrier.setFileName("Carriers.cfg");
+    Email.open(QIODevice::ReadWrite| QIODevice::Text);
+    Carrier.open(QIODevice::ReadWrite| QIODevice::Text);
+    SMS.open(QIODevice::ReadWrite| QIODevice::Text);
+    Config.setCarriers(&Carrier);
+    Email.close();
+    SMS.close();
     ui->textBrowser->hide();
 }
 
@@ -252,4 +261,9 @@ void SMBCast::on_actionToggle_Debug_triggered()
         ui->textBrowser->show();
     else
         ui->textBrowser->hide();
+}
+
+
+void SMBCast::on_actionE_Mail_Settings_triggered() {
+    Config.show();
 }

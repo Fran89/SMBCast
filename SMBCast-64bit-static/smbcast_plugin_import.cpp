@@ -2,7 +2,7 @@
 // static plugins specified using QTPLUGIN and QT_PLUGIN_CLASS.<plugin> variables.
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(AccessibleFactory)
-//Q_IMPORT_PLUGIN(PollPositionPlugin)
+Q_IMPORT_PLUGIN(PollPositionPlugin)
 Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)
 Q_IMPORT_PLUGIN(QDDSPlugin)
 Q_IMPORT_PLUGIN(QICNSPlugin)
