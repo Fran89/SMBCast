@@ -72,5 +72,5 @@ void SMClass::clear() {
 }
 
 int SMClass::size(){
-    Stations.length();
+    return Stations.length();
 }
