@@ -305,13 +305,12 @@ void SMBCast::on_SendEmail_clicked() {
 
         for (int i=0; i < Emails.size(); i++){
             QFile temp;
-            temp.setFileName("Temp.html");
+            temp.setFileName("Temp");
             temp.open(QIODevice::ReadWrite| QIODevice::Text);
             QTextStream Temp(&temp);
 
             if (Debug){
                 ui->textBrowser->append(Emails.at(i));
-                ui->textBrowser->append(cmdl + "-tv < Temp.html");
             }
             Temp    << "From: SMBCast@" << hstnm << endl
                     << "To: " << Emails.at(i) << endl
@@ -320,7 +319,7 @@ void SMBCast::on_SendEmail_clicked() {
                     << "MIME-Version: 1.0" << endl << endl
                     << ui->textEdit->toHtml() << endl;
             temp.close();
-            term.start("sendmail -tv < Temp.html");
+            term.start("sendmail -t -v < Temp");
             term.waitForFinished(-1);
             QByteArray dbg = term.readAllStandardOutput();
             temp.remove();
