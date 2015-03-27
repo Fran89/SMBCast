@@ -311,6 +311,7 @@ void SMBCast::on_SendEmail_clicked() {
 
             if (Debug){
                 ui->textBrowser->append(Emails.at(i));
+                ui->textBrowser->append(cmdl + "-tv < Temp.html");
             }
             Temp    << "From: SMBCast@" << hstnm << endl
                     << "To: " << Emails.at(i) << endl
@@ -319,7 +320,7 @@ void SMBCast::on_SendEmail_clicked() {
                     << "MIME-Version: 1.0" << endl << endl
                     << ui->textEdit->toHtml() << endl;
             temp.close();
-            term.start(cmdl + "-tv < Temp.html");
+            term.start(cmdl + " -tv < Temp.html");
             term.waitForFinished(-1);
             QByteArray dbg = term.readAllStandardOutput();
             temp.remove();
