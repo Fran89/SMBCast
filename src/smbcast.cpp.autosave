@@ -326,9 +326,9 @@ void SMBCast::on_SendEmail_clicked() {
             if (Debug){
                 ui->textBrowser->append(dbg.data());
             }
-
+            
         }
-
+        
     }
     Email.close();
 }

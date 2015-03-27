@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QDomDocument>
 #include <QTextTable>
+#include <QProcess>
 #include <QDir>
 #include <smclass.h>
 #include <smbconf.h>
@@ -29,6 +30,8 @@ private slots:
     void on_actionToggle_Debug_triggered();
 
     void on_actionE_Mail_Settings_triggered();
+
+    void on_SendEmail_clicked();
 
 private:
     Ui::SMBCast *ui;

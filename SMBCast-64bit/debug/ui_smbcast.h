@@ -13,10 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
@@ -36,6 +39,9 @@ public:
     QVBoxLayout *verticalLayout;
     QTextEdit *textEdit;
     QTextBrowser *textBrowser;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *SendEmail;
     QMenuBar *menuBar;
     QMenu *menuOptions;
     QMenu *menuHelp;
@@ -77,6 +83,21 @@ public:
 
         verticalLayout->addWidget(textBrowser);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        SendEmail = new QPushButton(centralWidget);
+        SendEmail->setObjectName(QStringLiteral("SendEmail"));
+
+        horizontalLayout->addWidget(SendEmail);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
         SMBCast->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SMBCast);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -110,6 +131,7 @@ public:
         actionManually_open_file->setText(QApplication::translate("SMBCast", "Manually open file", 0));
         actionToggle_Debug->setText(QApplication::translate("SMBCast", "Toggle Debug", 0));
         actionE_Mail_Settings->setText(QApplication::translate("SMBCast", "E-Mail Settings", 0));
+        SendEmail->setText(QApplication::translate("SMBCast", "Send", 0));
         menuOptions->setTitle(QApplication::translate("SMBCast", "Options", 0));
         menuHelp->setTitle(QApplication::translate("SMBCast", "Help", 0));
     } // retranslateUi
