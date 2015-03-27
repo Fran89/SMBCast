@@ -319,8 +319,8 @@ void SMBCast::on_SendEmail_clicked() {
                     << "MIME-Version: 1.0" << endl << endl
                     << ui->textEdit->toHtml() << endl;
             temp.close();
-            term.start("sendmail -t -v < Temp");
-            term.waitForFinished(-1);
+            term.start("bash", QStringList() << "-c" << "cat Temp | sendmail -t -v");
+            term.waitForFinished(300);
             QByteArray dbg = term.readAllStandardOutput();
             temp.remove();
             if (Debug){
