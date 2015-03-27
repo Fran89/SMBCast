@@ -106,6 +106,10 @@ void SMBCast::parse_shakemap(QString fileName){
 
 void SMBCast::DrawTable(){
 
+    // Clear
+
+    ui->textEdit->clear();
+
     // Set Up Table
     QTextCursor cursor(ui->textEdit->textCursor());
     cursor.movePosition(QTextCursor::Start);

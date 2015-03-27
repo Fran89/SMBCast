@@ -20,7 +20,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
@@ -43,8 +43,13 @@ public:
     QLineEdit *SMSIS;
     QComboBox *CarSel;
     QVBoxLayout *verticalLayout_2;
-    QListWidget *EmailList;
-    QPushButton *Remove;
+    QLabel *label_3;
+    QListView *EmailList;
+    QPushButton *RemoveEmail;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *label_4;
+    QListView *SMSList;
+    QPushButton *RemoveSMS;
 
     void setupUi(QFrame *SMBConf)
     {
@@ -113,18 +118,43 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        EmailList = new QListWidget(SMBConf);
+        label_3 = new QLabel(SMBConf);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        verticalLayout_2->addWidget(label_3);
+
+        EmailList = new QListView(SMBConf);
         EmailList->setObjectName(QStringLiteral("EmailList"));
 
         verticalLayout_2->addWidget(EmailList);
 
-        Remove = new QPushButton(SMBConf);
-        Remove->setObjectName(QStringLiteral("Remove"));
+        RemoveEmail = new QPushButton(SMBConf);
+        RemoveEmail->setObjectName(QStringLiteral("RemoveEmail"));
 
-        verticalLayout_2->addWidget(Remove);
+        verticalLayout_2->addWidget(RemoveEmail);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        label_4 = new QLabel(SMBConf);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        verticalLayout_3->addWidget(label_4);
+
+        SMSList = new QListView(SMBConf);
+        SMSList->setObjectName(QStringLiteral("SMSList"));
+
+        verticalLayout_3->addWidget(SMSList);
+
+        RemoveSMS = new QPushButton(SMBConf);
+        RemoveSMS->setObjectName(QStringLiteral("RemoveSMS"));
+
+        verticalLayout_3->addWidget(RemoveSMS);
+
+
+        horizontalLayout->addLayout(verticalLayout_3);
 
 
         retranslateUi(SMBConf);
@@ -139,7 +169,10 @@ public:
         InsEmail->setText(QApplication::translate("SMBConf", "Insert", 0));
         label_2->setText(QApplication::translate("SMBConf", "SMS Phone Number", 0));
         InsSMS->setText(QApplication::translate("SMBConf", "Insert", 0));
-        Remove->setText(QApplication::translate("SMBConf", "Remove", 0));
+        label_3->setText(QApplication::translate("SMBConf", "Subscribed Emails", 0));
+        RemoveEmail->setText(QApplication::translate("SMBConf", "Remove", 0));
+        label_4->setText(QApplication::translate("SMBConf", "Subscribed SMS", 0));
+        RemoveSMS->setText(QApplication::translate("SMBConf", "Remove", 0));
     } // retranslateUi
 
 };

@@ -18,7 +18,7 @@ CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 INCPATH       = -I../../../../DevProj/QT/LocalQTS2/mkspecs/linux-g++ -I../../src -I../../../../DevProj/QT/LocalQTS2/include -I../../../../DevProj/QT/LocalQTS2/include/QtWidgets -I../../../../DevProj/QT/LocalQTS2/include/QtPositioning -I../../../../DevProj/QT/LocalQTS2/include/QtXml -I../../../../DevProj/QT/LocalQTS2/include/QtGui -I../../../../DevProj/QT/LocalQTS2/include/QtCore -I. -I. -I.
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -L/home/francisco/DevProj/QT/LocalQTS2/lib -lQt5Xml -L/home/francisco/DevProj/QT/LocalQTS2/plugins/accessible -lqtaccessiblewidgets -lQt5Widgets -L/home/francisco/DevProj/QT/LocalQTS2/plugins/position -lqtposition_positionpoll -lQt5Positioning -L/home/francisco/DevProj/QT/LocalQTS2/plugins/platforms -lqxcb -lX11-xcb -lxcb-render-util -lSM -lICE -lxcb-glx -lxcb-render -ldbus-1 -lxcb -lxcb-image -lxcb-icccm -lxcb-sync -lxcb-xfixes -lxcb-shm -lxcb-randr -lxcb-shape -lxcb-keysyms -lxcb-xkb -lQt5PlatformSupport -lfontconfig -lfreetype -lXrender -lXext -lX11 -ludev -lQt5DBus -L/home/francisco/DevProj/QT/LocalQTS2/plugins/imageformats -lqdds -lqicns -lqico -lqjp2 -lqmng -lqtga -lqtiff -lqwbmp -lqwebp -lQt5Gui -ljpeg -lpng -lEGL -lQt5Core -lz -lm -ldl -pthread -lgthread-2.0 -lglib-2.0 -lrt -lGL -lpthread -L/home/francisco/DevProj/QT/LocalQTS2/plugins/position -lqtposition_positionpoll
+LIBS          = $(SUBLIBS) -L/home/francisco/DevProj/QT/LocalQTS2/lib -lQt5Xml -L/home/francisco/DevProj/QT/LocalQTS2/plugins/accessible -lqtaccessiblewidgets -lQt5Widgets -L/home/francisco/DevProj/QT/LocalQTS2/plugins/position -lqtposition_positionpoll -lQt5Positioning -L/home/francisco/DevProj/QT/LocalQTS2/plugins/platforms -lqxcb -lX11-xcb -lxcb-render-util -lSM -lICE -lxcb-glx -lxcb-render -ldbus-1 -lxcb -lxcb-image -lxcb-icccm -lxcb-sync -lxcb-xfixes -lxcb-shm -lxcb-randr -lxcb-shape -lxcb-keysyms -lxcb-xkb -lQt5PlatformSupport -lfontconfig -lfreetype -lXrender -lXext -lX11 -ludev -lQt5DBus -L/home/francisco/DevProj/QT/LocalQTS2/plugins/imageformats -lqdds -lqicns -lqico -lqjp2 -lqmng -lqtga -lqtiff -lqwbmp -lqwebp -lQt5Gui -ljpeg -lpng -lEGL -lQt5Core -lz -lm -ldl -pthread -lgthread-2.0 -lglib-2.0 -lrt -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /home/francisco/DevProj/QT/LocalQTS2/bin/qmake
@@ -48,12 +48,16 @@ OBJECTS_DIR   = ./
 SOURCES       = ../../src/main.cpp \
 		../../src/smbcast.cpp \
 		../../src/smclass.cpp \
-		smbcast_plugin_import.cpp moc_smbcast.cpp
+		../../src/smbconf.cpp \
+		smbcast_plugin_import.cpp moc_smbcast.cpp \
+		moc_smbconf.cpp
 OBJECTS       = main.o \
 		smbcast.o \
 		smclass.o \
+		smbconf.o \
 		smbcast_plugin_import.o \
-		moc_smbcast.o
+		moc_smbcast.o \
+		moc_smbconf.o
 DIST          = /home/DevProj/QT/LocalQTS2/mkspecs/features/spec_pre.prf \
 		/home/DevProj/QT/LocalQTS2/mkspecs/common/shell-unix.conf \
 		/home/DevProj/QT/LocalQTS2/mkspecs/common/unix.conf \
@@ -205,6 +209,7 @@ DIST          = /home/DevProj/QT/LocalQTS2/mkspecs/features/spec_pre.prf \
 		../../../src/SMBCast.pro ../../src/main.cpp \
 		../../src/smbcast.cpp \
 		../../src/smclass.cpp \
+		../../src/smbconf.cpp \
 		smbcast_plugin_import.cpp
 QMAKE_TARGET  = SMBCast
 DESTDIR       = #avoid trailing-slash linebreak
@@ -235,7 +240,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Widgets.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Positioning.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Xml.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Gui.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Core.a ui_smbcast.h $(OBJECTS)  
+$(TARGET): /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Widgets.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Positioning.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Xml.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Gui.a /home/francisco/DevProj/QT/LocalQTS2/lib/libQt5Core.a ui_smbcast.h ui_smbconf.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../../src/SMBCast.pro ../../../../DevProj/QT/LocalQTS2/mkspecs/features/spec_pre.prf \
@@ -582,7 +587,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SMBCast1.0.0 || mkdir -p .tmp/SMBCast1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.h ../../src/smclass.h .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/main.cpp ../../src/smbcast.cpp ../../src/smclass.cpp smbcast_plugin_import.cpp .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.ui .tmp/SMBCast1.0.0/ && (cd `dirname .tmp/SMBCast1.0.0` && $(TAR) SMBCast1.0.0.tar SMBCast1.0.0 && $(COMPRESS) SMBCast1.0.0.tar) && $(MOVE) `dirname .tmp/SMBCast1.0.0`/SMBCast1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SMBCast1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.h ../../src/smclass.h ../../src/smbconf.h .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/main.cpp ../../src/smbcast.cpp ../../src/smclass.cpp ../../src/smbconf.cpp smbcast_plugin_import.cpp .tmp/SMBCast1.0.0/ && $(COPY_FILE) --parents ../../src/smbcast.ui ../../src/smbconf.ui .tmp/SMBCast1.0.0/ && (cd `dirname .tmp/SMBCast1.0.0` && $(TAR) SMBCast1.0.0.tar SMBCast1.0.0 && $(COMPRESS) SMBCast1.0.0.tar) && $(MOVE) `dirname .tmp/SMBCast1.0.0`/SMBCast1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SMBCast1.0.0
 
 
 clean:compiler_clean 
@@ -606,9 +611,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_smbcast.cpp
+compiler_moc_header_make_all: moc_smbcast.cpp moc_smbconf.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_smbcast.cpp
+	-$(DEL_FILE) moc_smbcast.cpp moc_smbconf.cpp
 moc_smbcast.cpp: ../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmainwindow.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qwidget.h \
@@ -731,6 +736,8 @@ moc_smbcast.cpp: ../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow 
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../../src/smclass.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -740,16 +747,140 @@ moc_smbcast.cpp: ../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow 
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QSharedDataPointer \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/qpositioningglobal.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../src/smbconf.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../../src/smbcast.h
 	/home/francisco/DevProj/QT/LocalQTS2/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS2/mkspecs/linux-g++ -I/home/francisco/Programs/SMBCast/src -I/home/francisco/DevProj/QT/LocalQTS2/include -I/home/francisco/DevProj/QT/LocalQTS2/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS2/include/QtPositioning -I/home/francisco/DevProj/QT/LocalQTS2/include/QtXml -I/home/francisco/DevProj/QT/LocalQTS2/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS2/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/smbcast.h -o moc_smbcast.cpp
 
+moc_smbconf.cpp: ../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qwidget.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qwindowdefs.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qglobal.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qconfig.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfeatures.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsystemdetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qprocessordetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcompilerdetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtypeinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtypetraits.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsysinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlogging.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qflags.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qbasicatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_bootstrap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qgenericatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_msvc.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv7.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv6.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv5.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_ia64.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_mips.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_x86.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_cxx11.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_gcc.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_unix.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qglobalstatic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmutex.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qnumeric.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobjectdefs.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qnamespace.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobjectdefs_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qwindowdefs_win.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobject.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstring.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qchar.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qbytearray.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qrefcount.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qarraydata.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringbuilder.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlist.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qalgorithms.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qiterator.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcoreevent.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qscopedpointer.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmetatype.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvarlengtharray.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcontainerfwd.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qisenum.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobject_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmargins.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpaintdevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qrect.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsize.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qpoint.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpalette.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qcolor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qrgb.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlist.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qdatastream.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qiodevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qpair.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qregexp.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringmatcher.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qbrush.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvector.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qmatrix.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpolygon.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qregion.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qline.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtransform.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpainterpath.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qimage.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpixmap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsharedpointer.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qshareddata.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsharedpointer_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qhash.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfont.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontmetrics.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qsizepolicy.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qcursor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qkeysequence.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qevent.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvariant.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qdebug.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtextstream.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlocale.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qset.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcontiguouscache.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qurl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qurlquery.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfile.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfiledevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qvector2d.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtouchdevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QString \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
+		../../src/smbconf.h
+	/home/francisco/DevProj/QT/LocalQTS2/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS2/mkspecs/linux-g++ -I/home/francisco/Programs/SMBCast/src -I/home/francisco/DevProj/QT/LocalQTS2/include -I/home/francisco/DevProj/QT/LocalQTS2/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS2/include/QtPositioning -I/home/francisco/DevProj/QT/LocalQTS2/include/QtXml -I/home/francisco/DevProj/QT/LocalQTS2/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS2/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/smbconf.h -o moc_smbconf.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_smbcast.h
+compiler_uic_make_all: ui_smbcast.h ui_smbconf.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_smbcast.h
+	-$(DEL_FILE) ui_smbcast.h ui_smbconf.h
 ui_smbcast.h: ../../src/smbcast.ui
 	/home/francisco/DevProj/QT/LocalQTS2/bin/uic ../../src/smbcast.ui -o ui_smbcast.h
+
+ui_smbconf.h: ../../src/smbconf.ui
+	/home/francisco/DevProj/QT/LocalQTS2/bin/uic ../../src/smbconf.ui -o ui_smbconf.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -884,6 +1015,8 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../../src/smclass.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -893,6 +1026,15 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QSharedDataPointer \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/qpositioningglobal.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../src/smbconf.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QApplication \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qapplication.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcoreapplication.h \
@@ -1025,6 +1167,8 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../../src/smclass.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -1034,6 +1178,15 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QSharedDataPointer \
 		../../../../DevProj/QT/LocalQTS2/include/QtPositioning/qpositioningglobal.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../src/smbconf.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		ui_smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/QVariant \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QAction \
@@ -1052,8 +1205,6 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qheaderview.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemview.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractscrollarea.h \
-		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
-		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/qitemselectionmodel.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qstyleoption.h \
@@ -1141,6 +1292,119 @@ smclass.o: ../../src/smclass.cpp ../../src/smclass.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/qiterator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smclass.o ../../src/smclass.cpp
 
+smbconf.o: ../../src/smbconf.cpp ../../src/smbconf.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qwidget.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qwindowdefs.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qglobal.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qconfig.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfeatures.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsystemdetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qprocessordetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcompilerdetection.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtypeinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtypetraits.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsysinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlogging.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qflags.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qbasicatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_bootstrap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qgenericatomic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_msvc.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv7.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv6.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_armv5.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_ia64.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_mips.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_x86.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_cxx11.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_gcc.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qatomic_unix.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qglobalstatic.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmutex.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qnumeric.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobjectdefs.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qnamespace.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobjectdefs_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qwindowdefs_win.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobject.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstring.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qchar.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qbytearray.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qrefcount.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qarraydata.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringbuilder.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlist.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qalgorithms.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qiterator.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcoreevent.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qscopedpointer.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmetatype.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvarlengtharray.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcontainerfwd.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qisenum.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobject_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmargins.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpaintdevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qrect.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsize.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qpoint.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpalette.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qcolor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qrgb.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlist.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qdatastream.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qiodevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qpair.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qregexp.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringmatcher.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qbrush.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvector.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qmatrix.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpolygon.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qregion.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qline.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtransform.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpainterpath.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qimage.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qpixmap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsharedpointer.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qshareddata.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qsharedpointer_impl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qhash.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfont.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontmetrics.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qfontinfo.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtWidgets/qsizepolicy.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qcursor.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qkeysequence.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qevent.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qvariant.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qmap.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qdebug.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qtextstream.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qlocale.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qset.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qcontiguouscache.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qurl.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qurlquery.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfile.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qfiledevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qvector2d.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/qtouchdevice.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QString \
+		../../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
+		ui_smbconf.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbconf.o ../../src/smbconf.cpp
+
 smbcast_plugin_import.o: smbcast_plugin_import.cpp ../../../../DevProj/QT/LocalQTS2/include/QtCore/QtPlugin \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/qplugin.h \
 		../../../../DevProj/QT/LocalQTS2/include/QtCore/qobject.h \
@@ -1203,6 +1467,9 @@ smbcast_plugin_import.o: smbcast_plugin_import.cpp ../../../../DevProj/QT/LocalQ
 
 moc_smbcast.o: moc_smbcast.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_smbcast.o moc_smbcast.cpp
+
+moc_smbconf.o: moc_smbconf.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_smbconf.o moc_smbconf.cpp
 
 ####### Install
 
