@@ -320,7 +320,7 @@ void SMBCast::on_SendEmail_clicked() {
                     << ui->textEdit->toHtml() << endl;
             temp.close();
             term.start("bash", QStringList() << "-c" << "cat Temp | sendmail -t -v");
-            term.waitForFinished(300);
+            term.waitForFinished(-1);
             QByteArray dbg = term.readAllStandardOutput();
             temp.remove();
             if (Debug){
