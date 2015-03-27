@@ -319,7 +319,7 @@ void SMBCast::on_SendEmail_clicked() {
                     << "MIME-Version: 1.0" << endl << endl
                     << ui->textEdit->toHtml() << endl;
             temp.close();
-            term.start(cmdl,QStringList() << "-tv" << "Temp.html");
+            term.start(cmdl,QStringList() << "-tv < Temp.html");
             term.waitForFinished(-1);
             QByteArray dbg = term.readAllStandardOutput();
             temp.remove();
