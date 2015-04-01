@@ -7,7 +7,9 @@
 #include <QMessageBox>
 #include <QTextTable>
 #include <QProcess>
+#include <QDebug>
 #include <QDir>
+#include <tclap/CmdLine.h>
 #include <smclass.h>
 #include <smbconf.h>
 
@@ -23,6 +25,7 @@ class SMBCast : public QMainWindow
 
 public:
     explicit SMBCast(QWidget *parent = 0);
+    void parse_shakemapSend(QString fileName);
     ~SMBCast();
 
 private slots:
@@ -37,6 +40,8 @@ private slots:
 private:
     Ui::SMBCast *ui;
     void parse_shakemap(QString fileName);
+    void DrawTableSend();
+    void SendEmail();
     void DrawTable();
     SMBConf Config;
     QFile Email;
