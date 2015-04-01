@@ -30,6 +30,6 @@ TO DO:
 Acknowledgement:
 ----------------
 
- - The PRSMP for their help and support
- - USGS for their development of the shakemap standards.
- - The QT Development Team for their awesome QT Library.
+ - The Puerto Rico Strong Motion Program for their help and support
+ - USGS for their development of the shakemap standards. @ http://earthquake.usgs.gov/research/shakemap/
+ - The QT Development Team for their awesome QT Library @ http://qt-project.org/
