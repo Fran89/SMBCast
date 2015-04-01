@@ -18,6 +18,27 @@ qint32 SMClass::addStation(QString name, qreal lat, qreal lon) {
     Temp.Name = name;
     Temp.Location.setLatitude(lat);
     Temp.Location.setLongitude(lon);
+    for(int i = 0; i < 3; i++){
+        CompInf tmp;
+        tmp.pga = 0;
+        tmp.pgv = 0;
+        tmp.psa03 = 0;
+        tmp.psa10 = 0;
+        tmp.psa30 = 0;
+        switch(i){
+        case 0:
+            Temp.E = tmp;
+            break;
+        case 1:
+            Temp.N = tmp;
+            break;
+        case 2:
+            Temp.Z = tmp;
+            break;
+        default:
+            break;
+        }
+    }
     Stations.append(Temp);
     return Stations.indexOf(Temp);
 }

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QDomDocument>
+#include <QMessageBox>
 #include <QTextTable>
 #include <QProcess>
 #include <QDir>

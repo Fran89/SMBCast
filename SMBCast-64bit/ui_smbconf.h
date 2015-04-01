@@ -30,7 +30,8 @@ QT_BEGIN_NAMESPACE
 class Ui_SMBConf
 {
 public:
-    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *EmailIS;
@@ -50,6 +51,9 @@ public:
     QLabel *label_4;
     QListView *SMSList;
     QPushButton *RemoveSMS;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *pushButton;
 
     void setupUi(QFrame *SMBConf)
     {
@@ -58,8 +62,10 @@ public:
         SMBConf->resize(564, 464);
         SMBConf->setFrameShape(QFrame::StyledPanel);
         SMBConf->setFrameShadow(QFrame::Raised);
-        horizontalLayout = new QHBoxLayout(SMBConf);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        verticalLayout_4 = new QVBoxLayout(SMBConf);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         label = new QLabel(SMBConf);
@@ -114,7 +120,7 @@ public:
         verticalLayout->addLayout(formLayout_2);
 
 
-        horizontalLayout->addLayout(verticalLayout);
+        horizontalLayout_3->addLayout(verticalLayout);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -134,7 +140,7 @@ public:
         verticalLayout_2->addWidget(RemoveEmail);
 
 
-        horizontalLayout->addLayout(verticalLayout_2);
+        horizontalLayout_3->addLayout(verticalLayout_2);
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
@@ -154,7 +160,24 @@ public:
         verticalLayout_3->addWidget(RemoveSMS);
 
 
-        horizontalLayout->addLayout(verticalLayout_3);
+        horizontalLayout_3->addLayout(verticalLayout_3);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer);
+
+        pushButton = new QPushButton(SMBConf);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        horizontalLayout_4->addWidget(pushButton);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_4);
 
 
         retranslateUi(SMBConf);
@@ -173,6 +196,7 @@ public:
         RemoveEmail->setText(QApplication::translate("SMBConf", "Remove", 0));
         label_4->setText(QApplication::translate("SMBConf", "Subscribed SMS", 0));
         RemoveSMS->setText(QApplication::translate("SMBConf", "Remove", 0));
+        pushButton->setText(QApplication::translate("SMBConf", "Save", 0));
     } // retranslateUi
 
 };

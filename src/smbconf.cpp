@@ -1,3 +1,4 @@
+// This sets up the configuration window
 #include "smbconf.h"
 #include "ui_smbconf.h"
 
@@ -139,4 +140,9 @@ void SMBConf::showEvent(QShowEvent *event){
     EmaF.open(QIODevice::ReadWrite| QIODevice::Text);
     ReadFiles();
     event->accept();
+}
+
+void SMBConf::on_pushButton_clicked()
+{
+    this->close();
 }

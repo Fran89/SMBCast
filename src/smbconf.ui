@@ -19,109 +19,137 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>E-Mail Addresses</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="EmailIS"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="InsEmail">
-       <property name="text">
-        <string>Insert</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label">
          <property name="text">
-          <string>SMS Phone Number</string>
+          <string>E-Mail Addresses</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="InsSMS">
+       <item>
+        <widget class="QLineEdit" name="EmailIS"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="InsEmail">
          <property name="text">
           <string>Insert</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="SMSIS"/>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="CarSel"/>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>SMS Phone Number</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="InsSMS">
+           <property name="text">
+            <string>Insert</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="SMSIS"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="CarSel"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Subscribed Emails</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListView" name="EmailList"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="RemoveEmail">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Subscribed SMS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListView" name="SMSList"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="RemoveSMS">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Subscribed Emails</string>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListView" name="EmailList"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="RemoveEmail">
-       <property name="text">
-        <string>Remove</string>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
        </property>
-      </widget>
+      </spacer>
      </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QPushButton" name="pushButton">
        <property name="text">
-        <string>Subscribed SMS</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListView" name="SMSList"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="RemoveSMS">
-       <property name="text">
-        <string>Remove</string>
+        <string>Save</string>
        </property>
       </widget>
      </item>

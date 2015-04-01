@@ -45,6 +45,8 @@ private slots:
 
     void on_RemoveSMS_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     QFile EmaF;
     QFile SMSF;

@@ -6,7 +6,11 @@ SMBCast::SMBCast(QWidget *parent) :
     ui(new Ui::SMBCast)
 {
     ui->setupUi(this);
+
+    // Setup Debug
     Debug = false;
+
+    // Setup Filenames
     Email.setFileName("Email.cfg");
     SMS.setFileName("SMS.cfg");
     Carrier.setFileName("Carriers.cfg");
@@ -16,6 +20,8 @@ SMBCast::SMBCast(QWidget *parent) :
     Config.setCarriers(&Carrier);
     Email.close();
     SMS.close();
+
+    // Hide this unless Debug is on
     ui->textBrowser->hide();
 }
 
@@ -24,6 +30,7 @@ SMBCast::~SMBCast()
     delete ui;
 }
 
+// Manually open file button action.
 void SMBCast::on_actionManually_open_file_triggered() {
     QString fileName = QFileDialog::getOpenFileName (this, "Open CSV file",
                                                      QDir::currentPath(), "Shakemap XML(*.xml)");
@@ -32,9 +39,11 @@ void SMBCast::on_actionManually_open_file_triggered() {
     parse_shakemap(fileName);
 }
 
+// Funtion Parses Shakemap
 void SMBCast::parse_shakemap(QString fileName){
-    Stas.clear();
+    Stas.clear(); // Clear any previous Model
 
+    // Open Document
     QDomDocument doc;
     QFile xmldoc(fileName);
     if (!xmldoc.open(QIODevice::ReadOnly) || !doc.setContent(&xmldoc)){
@@ -42,6 +51,7 @@ void SMBCast::parse_shakemap(QString fileName){
         return;
     }
 
+    // Grab All Station Elements
     QDomNodeList stations = doc.elementsByTagName("station");
     for (int i = 0; i < stations.size(); i++) {
         QDomElement station =stations.at(i).toElement();
@@ -54,11 +64,16 @@ void SMBCast::parse_shakemap(QString fileName){
             ui->textBrowser->append("Longitude: " + station.attribute("lon","ERROR"));
         }
 
+        // Let's see if this station has been added
         qint32 CurID;
-        CurID = Stas.addStation(station.attribute("code","Err"),
-                                station.attribute("lat","ERROR").toDouble(),
-                                station.attribute("lon","ERROR").toDouble());
+        CurID = Stas.retIdx(station.attribute("code","Err"));
+        if (CurID == -1){
+            CurID = Stas.addStation(station.attribute("code","Err"),
+                                    station.attribute("lat","ERROR").toDouble(),
+                                    station.attribute("lon","ERROR").toDouble());
+        }
 
+        // Grab the child nodes (Components)
         QDomNodeList comps = STA.childNodes();
         for (int j=0; j < comps.size(); j++){
             QDomElement comp = comps.at(j).toElement();
@@ -69,9 +84,11 @@ void SMBCast::parse_shakemap(QString fileName){
                 ui->textBrowser->append("Component: " + comp.attribute("name","ERROR"));
             }
 
+            // Pull the component
             QString curcomp = comp.attribute("name","ERROR");
             CompInf Temp;
 
+            // Create the Component
             QDomNodeList cinfs = COM.childNodes();
             for (int k=0; k < cinfs.size();k++){
                 QDomElement cinf = cinfs.at(k).toElement();
@@ -91,6 +108,7 @@ void SMBCast::parse_shakemap(QString fileName){
                     Temp.psa30 = cinf.attribute("value","ERROR").toDouble();
             }
 
+            // Place the Component
             if (curcomp == "HNN")
                 Stas.addCmpNInfo(CurID,Temp.pga,Temp.pgv,Temp.psa03,Temp.psa10,Temp.psa30);
             else if (curcomp == "HNE")
@@ -101,13 +119,13 @@ void SMBCast::parse_shakemap(QString fileName){
 
     }
 
+    // Call the Draw table function
     DrawTable();
 }
 
 void SMBCast::DrawTable(){
 
     // Clear
-
     ui->textEdit->clear();
 
     // Set Up Table
@@ -118,6 +136,7 @@ void SMBCast::DrawTable(){
     SMTF.setAlignment(Qt::AlignHCenter);
     SMTF.setCellPadding(2);
 
+    // Table Headers
     QTextTable *SMTable = cursor.insertTable(2,18);
     SMTable->setFormat(SMTF);
     cursor = SMTable->cellAt(0,0).firstCursorPosition();
@@ -258,8 +277,8 @@ void SMBCast::DrawTable(){
     }
 }
 
-void SMBCast::on_actionToggle_Debug_triggered()
-{
+void SMBCast::on_actionToggle_Debug_triggered() {
+    // Debug Menu
     Debug = !Debug;
     if(Debug)
         ui->textBrowser->show();
@@ -268,11 +287,15 @@ void SMBCast::on_actionToggle_Debug_triggered()
 }
 
 void SMBCast::on_actionE_Mail_Settings_triggered() {
+    // Show Email Settings Dialog
     Config.show();
 }
 
 
 void SMBCast::on_SendEmail_clicked() {
+    // Send E-Mail via the sendmail command
+
+    // Open E-Mail file
     Email.open(QIODevice::ReadOnly);
     QTextStream in(&Email);
     QStringList Emails;
@@ -280,17 +303,21 @@ void SMBCast::on_SendEmail_clicked() {
         QString line = in.readLine();
         Emails.append(line);
     }
+
+    // Open a terminal
     QProcess term;
 
     term.setReadChannel(QProcess::StandardOutput);
     term.setProcessChannelMode(QProcess::MergedChannels);
 
+    // Look for Sendmail Command
     term.start("which",QStringList() << "sendmail");
     term.waitForFinished(-1);
     QByteArray cmd = term.readAllStandardOutput();
     QString cmdl(cmd.data());
     cmdl = cmdl.trimmed();
 
+    // Pull the Hostname
     term.start("hostname");
     term.waitForFinished(-1);
     QByteArray hst = term.readAllStandardOutput();
@@ -332,7 +359,10 @@ void SMBCast::on_SendEmail_clicked() {
             }
 
         }
-
+    } else {
+        QMessageBox temp;
+        temp.setText("This computer does have sendmail command");
+        temp.exec();
     }
     Email.close();
 }
