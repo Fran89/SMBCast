@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     bool GUI = false;
     QString Filename;
     try{
-        TCLAP::CmdLine cmd("SMBCast- A Strong Motion BroadCaster", ' ', "0.1");
+        TCLAP::CmdLine cmd("SMBCast- A ShakeMap BroadCaster", ' ', "0.1");
         TCLAP::SwitchArg GuiSwitch("n","no-gui","Suppress the Graphical User Interface",cmd,false);
         TCLAP::ValueArg<std::string> nameArg("f","smFile","Shakemap XML File", false,"event_dat.xml","string",cmd);
 

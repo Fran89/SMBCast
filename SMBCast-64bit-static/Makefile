@@ -719,6 +719,8 @@ moc_smbcast.cpp: ../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/QDomDocument \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qdom.h \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qtxmlglobal.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMessageBox \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmessagebox.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/QTextTable \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtexttable.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextobject.h \
@@ -730,6 +732,9 @@ moc_smbcast.cpp: ../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QDebug \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../src/smclass.h \
 		../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -742,6 +747,12 @@ moc_smbcast.cpp: ../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMainWindow \
 		../src/smbconf.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../src/smbcast.h
 	/home/francisco/DevProj/QT/LocalQTS2/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS2/mkspecs/linux-g++ -I/home/francisco/Programs/SMBCast/src -I/home/francisco/DevProj/QT/LocalQTS2/include -I/home/francisco/DevProj/QT/LocalQTS2/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS2/include/QtPositioning -I/home/francisco/DevProj/QT/LocalQTS2/include/QtXml -I/home/francisco/DevProj/QT/LocalQTS2/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS2/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/smbcast.h -o moc_smbcast.cpp
 
@@ -846,6 +857,14 @@ moc_smbconf.cpp: ../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/qfiledevice.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qvector2d.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtouchdevice.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QString \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../src/smbconf.h
 	/home/francisco/DevProj/QT/LocalQTS2/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS2/mkspecs/linux-g++ -I/home/francisco/Programs/SMBCast/src -I/home/francisco/DevProj/QT/LocalQTS2/include -I/home/francisco/DevProj/QT/LocalQTS2/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS2/include/QtPositioning -I/home/francisco/DevProj/QT/LocalQTS2/include/QtXml -I/home/francisco/DevProj/QT/LocalQTS2/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS2/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/smbconf.h -o moc_smbconf.cpp
 
@@ -982,6 +1001,8 @@ main.o: ../src/main.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/QDomDocument \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qdom.h \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qtxmlglobal.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMessageBox \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmessagebox.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/QTextTable \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtexttable.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextobject.h \
@@ -993,6 +1014,9 @@ main.o: ../src/main.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QDebug \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../src/smclass.h \
 		../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -1005,6 +1029,12 @@ main.o: ../src/main.cpp ../src/smbcast.h \
 		../src/smbconf.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QApplication \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qapplication.h \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/qcoreapplication.h \
@@ -1126,6 +1156,8 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/QDomDocument \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qdom.h \
 		../../../DevProj/QT/LocalQTS2/include/QtXml/qtxmlglobal.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMessageBox \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmessagebox.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/QTextTable \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtexttable.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextobject.h \
@@ -1137,6 +1169,9 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qrawfont.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qfontdatabase.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QProcess \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qprocess.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QDebug \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/QDir \
 		../src/smclass.h \
 		../../../DevProj/QT/LocalQTS2/include/QtPositioning/QGeoCoordinate \
@@ -1149,6 +1184,12 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../src/smbconf.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFrame \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qframe.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		ui_smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/QVariant \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QAction \
@@ -1163,11 +1204,15 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qinputmethod.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QButtonGroup \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qbuttongroup.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QHBoxLayout \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qboxlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayoutitem.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qgridlayout.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QHeaderView \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qheaderview.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemview.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractscrollarea.h \
-		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/qitemselectionmodel.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemdelegate.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qstyleoption.h \
@@ -1183,6 +1228,10 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmenu.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QMenuBar \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qmenubar.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QPushButton \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qpushbutton.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractbutton.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QSpacerItem \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QStatusBar \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qstatusbar.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QTextBrowser \
@@ -1193,10 +1242,6 @@ smbcast.o: ../src/smbcast.cpp ../src/smbcast.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QToolBar \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qtoolbar.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QVBoxLayout \
-		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qboxlayout.h \
-		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayout.h \
-		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayoutitem.h \
-		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qgridlayout.h \
 		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbcast.o ../src/smbcast.cpp
 
@@ -1357,7 +1402,70 @@ smbconf.o: ../src/smbconf.cpp ../src/smbconf.h \
 		../../../DevProj/QT/LocalQTS2/include/QtCore/qfiledevice.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qvector2d.h \
 		../../../DevProj/QT/LocalQTS2/include/QtGui/qtouchdevice.h \
-		ui_smbconf.h
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QList \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QFile \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QTextStream \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QString \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/QCloseEvent \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QStringListModel \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qstringlistmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qabstractitemmodel.h \
+		ui_smbconf.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/QVariant \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QAction \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qaction.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qicon.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qactiongroup.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QApplication \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qapplication.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qcoreapplication.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qeventloop.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qdesktopwidget.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qguiapplication.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qinputmethod.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QButtonGroup \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qbuttongroup.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QComboBox \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qcombobox.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemdelegate.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qstyleoption.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractspinbox.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qvalidator.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qregularexpression.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qslider.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractslider.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qstyle.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qtabbar.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qtabwidget.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qrubberband.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QFormLayout \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qformlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QLayout \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlayoutitem.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qboxlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qgridlayout.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QHBoxLayout \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QHeaderView \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qheaderview.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractitemview.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractscrollarea.h \
+		../../../DevProj/QT/LocalQTS2/include/QtCore/qitemselectionmodel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QLabel \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlabel.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QLineEdit \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlineedit.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextformat.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qpen.h \
+		../../../DevProj/QT/LocalQTS2/include/QtGui/qtextoption.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QListView \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qlistview.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QPushButton \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qpushbutton.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/qabstractbutton.h \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QSpacerItem \
+		../../../DevProj/QT/LocalQTS2/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbconf.o ../src/smbconf.cpp
 
 smbcast_plugin_import.o: smbcast_plugin_import.cpp ../../../DevProj/QT/LocalQTS2/include/QtCore/QtPlugin \

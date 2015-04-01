@@ -496,6 +496,8 @@ moc_smbcast.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtGui/QTextTable \
 		/usr/include/qt5/QtGui/qtexttable.h \
 		/usr/include/qt5/QtGui/qtextobject.h \
@@ -505,6 +507,9 @@ moc_smbcast.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtGui/qglyphrun.h \
 		/usr/include/qt5/QtGui/qrawfont.h \
 		/usr/include/qt5/QtGui/qfontdatabase.h \
+		/usr/include/qt5/QtCore/QProcess \
+		/usr/include/qt5/QtCore/qprocess.h \
+		/usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -517,6 +522,12 @@ moc_smbcast.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		../../src/smbconf.h \
 		/usr/include/qt5/QtWidgets/QFrame \
 		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QTextStream \
+		/usr/include/qt5/QtGui/QCloseEvent \
+		/usr/include/qt5/QtCore/QStringListModel \
+		/usr/include/qt5/QtCore/qstringlistmodel.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		../../src/smbcast.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/smbcast.h -o moc_smbcast.cpp
 
@@ -629,6 +640,14 @@ moc_smbconf.cpp: /usr/include/qt5/QtWidgets/QFrame \
 		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QTextStream \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtGui/QCloseEvent \
+		/usr/include/qt5/QtCore/QStringListModel \
+		/usr/include/qt5/QtCore/qstringlistmodel.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		../../src/smbconf.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/smbconf.h -o moc_smbconf.cpp
 
@@ -773,6 +792,8 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtGui/QTextTable \
 		/usr/include/qt5/QtGui/qtexttable.h \
 		/usr/include/qt5/QtGui/qtextobject.h \
@@ -782,6 +803,9 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtGui/qglyphrun.h \
 		/usr/include/qt5/QtGui/qrawfont.h \
 		/usr/include/qt5/QtGui/qfontdatabase.h \
+		/usr/include/qt5/QtCore/QProcess \
+		/usr/include/qt5/QtCore/qprocess.h \
+		/usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -794,6 +818,12 @@ main.o: ../../src/main.cpp ../../src/smbcast.h \
 		../../src/smbconf.h \
 		/usr/include/qt5/QtWidgets/QFrame \
 		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QTextStream \
+		/usr/include/qt5/QtGui/QCloseEvent \
+		/usr/include/qt5/QtCore/QStringListModel \
+		/usr/include/qt5/QtCore/qstringlistmodel.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
@@ -923,6 +953,8 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtXml/QDomDocument \
 		/usr/include/qt5/QtXml/qdom.h \
 		/usr/include/qt5/QtXml/qtxmlglobal.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtGui/QTextTable \
 		/usr/include/qt5/QtGui/qtexttable.h \
 		/usr/include/qt5/QtGui/qtextobject.h \
@@ -932,6 +964,9 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtGui/qglyphrun.h \
 		/usr/include/qt5/QtGui/qrawfont.h \
 		/usr/include/qt5/QtGui/qfontdatabase.h \
+		/usr/include/qt5/QtCore/QProcess \
+		/usr/include/qt5/QtCore/qprocess.h \
+		/usr/include/qt5/QtCore/QDebug \
 		/usr/include/qt5/QtCore/QDir \
 		../../src/smclass.h \
 		/usr/include/qt5/QtPositioning/QGeoCoordinate \
@@ -944,6 +979,12 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		../../src/smbconf.h \
 		/usr/include/qt5/QtWidgets/QFrame \
 		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QTextStream \
+		/usr/include/qt5/QtGui/QCloseEvent \
+		/usr/include/qt5/QtCore/QStringListModel \
+		/usr/include/qt5/QtCore/qstringlistmodel.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		ui_smbcast.h \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/QAction \
@@ -958,11 +999,15 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtGui/qinputmethod.h \
 		/usr/include/qt5/QtWidgets/QButtonGroup \
 		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
 		/usr/include/qt5/QtWidgets/QHeaderView \
 		/usr/include/qt5/QtWidgets/qheaderview.h \
 		/usr/include/qt5/QtWidgets/qabstractitemview.h \
 		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtCore/qitemselectionmodel.h \
 		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
 		/usr/include/qt5/QtWidgets/qstyleoption.h \
@@ -978,6 +1023,10 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtWidgets/qmenu.h \
 		/usr/include/qt5/QtWidgets/QMenuBar \
 		/usr/include/qt5/QtWidgets/qmenubar.h \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QSpacerItem \
 		/usr/include/qt5/QtWidgets/QStatusBar \
 		/usr/include/qt5/QtWidgets/qstatusbar.h \
 		/usr/include/qt5/QtWidgets/QTextBrowser \
@@ -989,10 +1038,6 @@ smbcast.o: ../../src/smbcast.cpp ../../src/smbcast.h \
 		/usr/include/qt5/QtWidgets/QToolBar \
 		/usr/include/qt5/QtWidgets/qtoolbar.h \
 		/usr/include/qt5/QtWidgets/QVBoxLayout \
-		/usr/include/qt5/QtWidgets/qboxlayout.h \
-		/usr/include/qt5/QtWidgets/qlayout.h \
-		/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		/usr/include/qt5/QtWidgets/qgridlayout.h \
 		/usr/include/qt5/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbcast.o ../../src/smbcast.cpp
 
@@ -1169,7 +1214,70 @@ smbconf.o: ../../src/smbconf.cpp ../../src/smbconf.h \
 		/usr/include/qt5/QtCore/qfiledevice.h \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
-		ui_smbconf.h
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QTextStream \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtGui/QCloseEvent \
+		/usr/include/qt5/QtCore/QStringListModel \
+		/usr/include/qt5/QtCore/qstringlistmodel.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		ui_smbconf.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtGui/qguiapplication.h \
+		/usr/include/qt5/QtGui/qinputmethod.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QComboBox \
+		/usr/include/qt5/QtWidgets/qcombobox.h \
+		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/qt5/QtWidgets/qstyleoption.h \
+		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		/usr/include/qt5/QtGui/qvalidator.h \
+		/usr/include/qt5/QtCore/qregularexpression.h \
+		/usr/include/qt5/QtWidgets/qslider.h \
+		/usr/include/qt5/QtWidgets/qabstractslider.h \
+		/usr/include/qt5/QtWidgets/qstyle.h \
+		/usr/include/qt5/QtWidgets/qtabbar.h \
+		/usr/include/qt5/QtWidgets/qtabwidget.h \
+		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/QFormLayout \
+		/usr/include/qt5/QtWidgets/qformlayout.h \
+		/usr/include/qt5/QtWidgets/QLayout \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
+		/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/QLineEdit \
+		/usr/include/qt5/QtWidgets/qlineedit.h \
+		/usr/include/qt5/QtGui/qtextcursor.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		/usr/include/qt5/QtWidgets/QListView \
+		/usr/include/qt5/QtWidgets/qlistview.h \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QSpacerItem \
+		/usr/include/qt5/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smbconf.o ../../src/smbconf.cpp
 
 moc_smbcast.o: moc_smbcast.cpp 
