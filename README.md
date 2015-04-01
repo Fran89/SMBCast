@@ -5,9 +5,6 @@ Description
 -----------
 This small repository is for an in house shakemap broadcaster. It will read from the shakemap XML and create a table and broadcast over email and SMS. The SMS will only contain the names and peak acceleration of the three most accelerated stations(Hopefully).
 
-----------
-
-
 Usage
 -------------
 This program has a GUI interface as well as a commandline interface. In order to use the command line interface (for automation purposes) first be sure that all emails are accounted for in the Email.cfg file that is automatically generated. This can be configured easily in the GUI under the email settings tab. The program can be launched as so:
@@ -24,12 +21,16 @@ If no flags are input the GUI Version will show up. Here you can configure SMS &
 TO DO:
 ------
 
- - Highlight Strongest Accelerations. 
+ - Highlight strongest accelerations. 
  - Implement SMS.
 
 Acknowledgement:
 ----------------
+If anybody is interested in helping or needs help setting this up contact me!
 
  - The Puerto Rico Strong Motion Program for their help and support
  - USGS for their development of the shakemap standards. @ http://earthquake.usgs.gov/research/shakemap/
  - The QT Development Team for their awesome QT Library @ http://qt-project.org/
+ 
+
+ Thanks, Fran89.
