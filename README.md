@@ -30,6 +30,7 @@ If anybody is interested in helping or needs help setting this up contact me!
 
  - The Puerto Rico Strong Motion Program for their help and support
  - USGS for their development of the shakemap standards. @ http://earthquake.usgs.gov/research/shakemap/
+ - Michael E. Smoot for the TCLAP Library included in this project @ http://tclap.sourceforge.net/
  - The QT Development Team for their awesome QT Library @ http://qt-project.org/
  
 
