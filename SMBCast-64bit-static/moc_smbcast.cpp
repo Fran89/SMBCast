@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'smbcast.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'smbcast.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.3.1. It"
+#error "This file was generated using the moc from 5.4.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -29,12 +29,13 @@ struct qt_meta_stringdata_SMBCast_t {
     )
 static const qt_meta_stringdata_SMBCast_t qt_meta_stringdata_SMBCast = {
     {
-QT_MOC_LITERAL(0, 0, 7),
-QT_MOC_LITERAL(1, 8, 37),
-QT_MOC_LITERAL(2, 46, 0),
-QT_MOC_LITERAL(3, 47, 31),
-QT_MOC_LITERAL(4, 79, 34),
-QT_MOC_LITERAL(5, 114, 20)
+QT_MOC_LITERAL(0, 0, 7), // "SMBCast"
+QT_MOC_LITERAL(1, 8, 37), // "on_actionManually_open_file_t..."
+QT_MOC_LITERAL(2, 46, 0), // ""
+QT_MOC_LITERAL(3, 47, 31), // "on_actionToggle_Debug_triggered"
+QT_MOC_LITERAL(4, 79, 34), // "on_actionE_Mail_Settings_trig..."
+QT_MOC_LITERAL(5, 114, 20) // "on_SendEmail_clicked"
+
     },
     "SMBCast\0on_actionManually_open_file_triggered\0"
     "\0on_actionToggle_Debug_triggered\0"
@@ -88,7 +89,7 @@ void SMBCast::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
 
 const QMetaObject SMBCast::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_SMBCast.data,
-      qt_meta_data_SMBCast,  qt_static_metacall, 0, 0}
+      qt_meta_data_SMBCast,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -99,7 +100,7 @@ const QMetaObject *SMBCast::metaObject() const
 
 void *SMBCast::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_SMBCast.stringdata))
         return static_cast<void*>(const_cast< SMBCast*>(this));
     return QMainWindow::qt_metacast(_clname);
