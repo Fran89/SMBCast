@@ -26,6 +26,7 @@ class SMBCast : public QMainWindow
 public:
     explicit SMBCast(QWidget *parent = 0);
     void parse_shakemapSend(QString fileName);
+    void setEvtID(int ID);
     ~SMBCast();
 
 private slots:
@@ -47,6 +48,7 @@ private:
     QFile Email;
     QFile SMS;
     QFile Carrier;
+    int EvtID;
 };
 
 #endif // SMBCAST_H

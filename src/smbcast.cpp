@@ -21,6 +21,7 @@ SMBCast::SMBCast(QWidget *parent) :
     Email.close();
     SMS.close();
 
+    EvtID =0;
     // Hide this unless Debug is on
     ui->textBrowser->hide();
 }
@@ -667,12 +668,21 @@ void SMBCast::SendEmail(){
             if (Debug){
                 ui->textBrowser->append(Emails.at(i));
             }
-            Temp    << "From: SMBCast@" << hstnm << endl
-                    << "To: " << Emails.at(i) << endl
-                    << "Subject: Latest ShakeMap Table" << endl
-                    << "Content-Type: text/html" << endl
-                    << "MIME-Version: 1.0" << endl << endl
-                    << ui->textEdit->toHtml() << endl;
+            if (EvtID == 0){
+                Temp    << "From: SMBCast@" << hstnm << endl
+                        << "To: " << Emails.at(i) << endl
+                        << "Subject: Latest ShakeMap Table" << endl
+                        << "Content-Type: text/html" << endl
+                        << "MIME-Version: 1.0" << endl << endl
+                        << ui->textEdit->toHtml() << endl;
+            } else {
+                Temp    << "From: SMBCast@" << hstnm << endl
+                        << "To: " << Emails.at(i) << endl
+                        << "Subject: ShakeMap Table for EventID: "<< EvtID << endl
+                        << "Content-Type: text/html" << endl
+                        << "MIME-Version: 1.0" << endl << endl
+                        << ui->textEdit->toHtml() << endl;
+            }
             temp.close();
             term.start("bash", QStringList() << "-c" << "cat Temp | sendmail -t -v");
             term.waitForFinished(-1);
@@ -690,4 +700,8 @@ void SMBCast::SendEmail(){
     }
     qDebug() << "Finished Sending Email";
     Email.close();
+}
+
+void SMBCast::setEvtID(int ID){
+    EvtID = ID;
 }
